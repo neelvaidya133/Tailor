@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-
+import { Spin } from "antd";
 const GET_PRICES = gql`
   query prices($id: Int!) {
     companyById(id: $id) {
@@ -23,7 +23,7 @@ const GetPrices = (id) => {
     variables: { id: id },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spin delay={5000} />;
   if (error) return <p>Error :(</p>;
 
   const prices = data?.companyById?.priceByCompanyId;

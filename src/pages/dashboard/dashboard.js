@@ -10,19 +10,29 @@ import {
   NotificationOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu, theme } from "antd";
 import GetAllOrders from "../../graphql/Queries/GetAllOrders";
-import PendingOrders from "../../components/PendingOrders/PendingOrders";
+import PendingOrders from "../../components/OrdersView/OrdersView";
+import OrdersView from "../../components/OrdersView/OrdersView";
 const { Header, Content, Sider } = Layout;
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const companyId = parseInt(Cookies.get("shopId"));
   const { prices, loading, error } = GetPrices(companyId);
   const [priceDrawer, setPriceDrawer] = React.useState(false);
   const [openKey, setOpenKey] = React.useState("1");
   const [selectedKey, setSelectedKey] = React.useState("sub1");
-  const { allOrders, orderLoading, orderError } = GetAllOrders(companyId);
+  const {
+    allOrders,
+    completedOrders,
+    pendingOrders,
+    orderLoading,
+    orderError,
+  } = GetAllOrders(companyId);
 
+  const p = allOrders?.filter((order) => order.orderStatus === "pending");
+  console.log("p", p);
   const { customers, customerLoading, customerError } =
     GetCustomerByCompanyId(companyId);
   useEffect(() => {
@@ -37,12 +47,18 @@ const Dashboard = () => {
     setSelectedKey(e.key);
     console.log(e);
   };
+  console.log("allOrders", allOrders);
+  console.log("completedOrders", completedOrders);
+  console.log("PendingOrders", p);
+
   return (
     <Layout>
       <Header
         style={{
           display: "flex",
           alignItems: "center",
+          flexDirection: "row",
+          justifyContent: "space-between",
         }}
       >
         <div className="">
@@ -53,6 +69,20 @@ const Dashboard = () => {
           >
             Shop Name
           </h1>
+        </div>
+
+        <div>
+          <Button
+            onClick={() => {
+              Cookies.remove("shopId");
+              Cookies.remove("jwtToken");
+              Cookies.remove("user_id");
+
+              navigate("/");
+            }}
+          >
+            Logout
+          </Button>
         </div>
       </Header>
       <Layout>
@@ -106,9 +136,11 @@ const Dashboard = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            {selectedKey === "sub1" && <PendingOrders />}
-            {selectedKey === "sub2" && <h1>Completed</h1>}
-            {selectedKey === "sub3" && <h1>All</h1>}
+            {selectedKey === "sub1" && (
+              <OrdersView data={pendingOrders} isPending={true} />
+            )}
+            {selectedKey === "sub2" && <OrdersView data={completedOrders} />}
+            {selectedKey === "sub3" && <OrdersView data={allOrders} />}
             {selectedKey === "2" &&
               (customers ? (
                 <CustomerView customers={customers} companyId={companyId} />

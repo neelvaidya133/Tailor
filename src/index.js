@@ -6,6 +6,7 @@ import { ApolloProvider } from "@apollo/client";
 import client from "./graphql/client";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import "antd/dist/antd";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

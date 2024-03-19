@@ -9,13 +9,14 @@ import {
 } from "./style";
 import GetCompanyData from "../../graphql/Queries/GetCompanyData";
 import { useNavigate } from "react-router-dom";
-
+import { Spin } from "antd";
 import Cookies from "js-cookie";
 
 const ShopRegister = () => {
   const navigate = useNavigate();
   const { hasCompany, companyData, loading, error } = GetCompanyData();
   const [shopId, setShopId] = useState(null);
+  const [isLoading, setIsloading] = useState(false);
 
   if (hasCompany) {
     console.log("hasCompany", hasCompany);
@@ -29,10 +30,13 @@ const ShopRegister = () => {
 
     const handleContinue = (e) => {
       e.preventDefault();
+      setIsloading(true);
 
       Cookies.set("shopId", JSON.stringify(shopId));
       navigate("/prices");
     };
+
+    isLoading && <Spin delay={5000} />;
     return (
       <>
         <h1>You have already registered a shop</h1>

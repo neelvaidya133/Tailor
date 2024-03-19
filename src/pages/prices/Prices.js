@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { SET_PRICE } from "../../graphql/Mutations/SetPrice";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import GetPrices from "../../graphql/Queries/GetPrices";
+import { Spin } from "antd";
 
 const Prices = () => {
   const navigate = useNavigate();
@@ -16,6 +17,13 @@ const Prices = () => {
     suitPrice: "",
     sherwaniPrice: "",
   });
+
+  useEffect(() => {
+    if (prices) {
+      navigate("/dashboard");
+    }
+  }, [prices]);
+
   const [addPrices] = useMutation(SET_PRICE, {
     onCompleted: (data) => {
       console.log(data);
@@ -53,6 +61,11 @@ const Prices = () => {
         };
       });
     };
+
+    if (loading) {
+      console.log("loading");
+      return <Spin delay={5000} />;
+    }
 
     return (
       <>
@@ -121,7 +134,6 @@ const Prices = () => {
       </>
     );
   }
-  navigate("/dashboard");
 };
 
 export default Prices;

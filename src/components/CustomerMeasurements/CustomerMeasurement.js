@@ -63,7 +63,6 @@ const CustomerMeasurement = ({ customerId, onClose }) => {
     onCompleted({ data }) {
       console.log("data", data);
       setDrawerVisible(false);
-      this.refetchQueries(GetCustomerMeasurementsByCustomerId);
     },
     onError: (error) => {
       console.log("error", error);

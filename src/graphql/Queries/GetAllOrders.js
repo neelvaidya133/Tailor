@@ -19,6 +19,10 @@ export const GET_ALL_ORDERS = gql`
           deliveryDate
           updatedAt
           createdAt
+          customerByCustomerId {
+            firstName
+            lastName
+          }
         }
       }
     }
@@ -33,10 +37,16 @@ const GetAllOrders = (id) => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  const allOrders = data?.companyById;
+  const allOrders = data?.companyById?.ordersByCompanyId?.nodes;
+  const pendingOrders = allOrders.filter(
+    (order) => order.orderStatus === "pending"
+  );
+  const completedOrders = allOrders.filter(
+    (order) => order.orderStatus === "Completed"
+  );
   console.log("orders", allOrders);
 
-  return { allOrders, loading, error };
+  return { allOrders, pendingOrders, completedOrders, loading, error };
 };
 
 export default GetAllOrders;
