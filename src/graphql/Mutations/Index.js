@@ -7,6 +7,7 @@ import { UPDATE_CUSTOMER_MEASUREMENT } from "./UpdateCustomerMeasurement";
 import { CREATE_CUSTOMER_MEASUREMENT } from "./CreateCustomerMeasurement";
 import { CREATE_NEW_CUSTOMER } from "./CreateNewCustomer";
 import { UPDATE_ORDER_STATUS } from "./UpdateOrderStatus";
+import { UPDATE_PRICE_BY_COMPANY_ID } from "./UpdatePriceByCompanyId";
 
 export {
   SIGNIN_MUTATION,
@@ -16,4 +17,5 @@ export {
   CREATE_CUSTOMER_MEASUREMENT,
   CREATE_NEW_CUSTOMER,
   UPDATE_ORDER_STATUS,
+  UPDATE_PRICE_BY_COMPANY_ID,
 };

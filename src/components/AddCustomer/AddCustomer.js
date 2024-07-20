@@ -4,6 +4,8 @@ import { useMutation } from "@apollo/client";
 import { CREATE_NEW_CUSTOMER } from "../../graphql/Mutations/Index";
 import { useRecoilState } from "recoil";
 import { createCustomer } from "../../recoil/atoms/DrawerTriggers";
+import { Form, Input, Button } from "antd";
+
 import { GET_CustomerByCompanyId } from "../../graphql/Queries/GetCustomerByCompanyId";
 
 const AddCustomer = (props) => {
@@ -55,24 +57,66 @@ const AddCustomer = (props) => {
         placement="right"
         onClose={props.onClose}
       >
-        <p>FirstName:</p>
-        <input type="text" name="firstName" onChange={handleChange} required />
-        <p>LastName:</p>
-        <input type="text" name="lastName" onChange={handleChange} required />
-        <p>Address:</p>
-        <input type="text" name="address" onChange={handleChange} required />
-        <p>Phone:</p>
-        <input type="text" name="phone" onChange={handleChange} required />
-        <p>Email:</p>
-        <input type="email" name="email" onChange={handleChange} required />
-        <div style={{ textAlign: "left" }}>
-          <button
-            onClick={handleAddCustomer}
-            style={{ marginRight: 8, marginTop: 40 }}
+        <Form
+          name="customerForm"
+          layout="vertical"
+          onFinish={handleAddCustomer}
+        >
+          <Form.Item
+            label="First Name"
+            name="firstName"
+            rules={[
+              { required: true, message: "Please input your first name!" },
+            ]}
           >
-            Add/Update
-          </button>
-        </div>
+            <Input name="firstName" onChange={handleChange} />
+          </Form.Item>
+
+          <Form.Item
+            label="Last Name"
+            name="lastName"
+            rules={[
+              { required: true, message: "Please input your last name!" },
+            ]}
+          >
+            <Input name="lastName" onChange={handleChange} />
+          </Form.Item>
+
+          <Form.Item
+            label="Address"
+            name="address"
+            rules={[{ required: true, message: "Please input your address!" }]}
+          >
+            <Input name="address" onChange={handleChange} />
+          </Form.Item>
+
+          <Form.Item
+            label="Phone"
+            name="phone"
+            rules={[
+              { required: true, message: "Please input your phone number!" },
+            ]}
+          >
+            <Input name="phone" onChange={handleChange} />
+          </Form.Item>
+
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              { required: true, message: "Please input your email!" },
+              { type: "email", message: "Please enter a valid email!" },
+            ]}
+          >
+            <Input name="email" onChange={handleChange} />
+          </Form.Item>
+
+          <Form.Item>
+            <Button type="primary" htmlType="submit" style={{ marginTop: 40 }}>
+              Add/Update
+            </Button>
+          </Form.Item>
+        </Form>
       </Drawer>
     </>
   );

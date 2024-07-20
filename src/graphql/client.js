@@ -10,7 +10,7 @@ import { onError } from "@apollo/client/link/error";
 import Cookies from "js-cookie";
 
 const httpLink = new HttpLink({
-  uri: "http://18.217.143.42:3500/graphql",
+  uri: "http://localhost:3500/graphql",
 });
 
 const authLink = new ApolloLink((operation, forward) => {

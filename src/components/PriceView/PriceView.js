@@ -1,30 +1,70 @@
-import React from "react";
-import { Drawer } from "antd";
+import React, { useEffect } from "react";
+import { Drawer, Form, Input, Button, Spin } from "antd";
+import { useMutation, useQuery } from "@apollo/client";
+import { UPDATE_PRICE_BY_COMPANY_ID } from "../../graphql/Mutations/UpdatePriceByCompanyId";
+import { GET_PRICES } from "../../graphql/Queries/GetPrices";
 
 const PriceView = (props) => {
-  const [price, setPrice] = React.useState(props.prices);
+  const [form] = Form.useForm();
+
+  const { loading, error, data, refetch } = useQuery(GET_PRICES, {
+    variables: { id: props.companyId },
+  });
+
+  const [updatePriceByCompanyId] = useMutation(UPDATE_PRICE_BY_COMPANY_ID, {
+    onCompleted: (data) => {
+      console.log(data);
+      refetch();
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  useEffect(() => {
+    if (data) {
+      const price = data.companyById.priceByCompanyId;
+      form.setFieldsValue({
+        coatPrice: price.coatPrice,
+        pantPrice: price.pantPrice,
+        shirtPrice: price.shirtPrice,
+        suitPrice: price.suitPrice,
+        sherwaniPrice: price.sherwaniPrice,
+      });
+    }
+  }, [data, form]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setPrice((prev) => {
-      return {
-        ...prev,
-        [name]: value,
-      };
+    form.setFieldsValue({
+      [name]: value,
     });
   };
+
   const handleClick = () => {
+    const values = form.getFieldsValue();
     const variables = {
-      coatPrice: parseInt(price.coatPrice),
-      pantPrice: parseInt(price.pantPrice),
-      shirtPrice: parseInt(price.shirtPrice),
-      suitPrice: parseInt(price.suitPrice),
-      sherwaniPrice: parseInt(price.sherwaniPrice),
+      coatPrice: parseInt(values.coatPrice),
+      pantPrice: parseInt(values.pantPrice),
+      shirtPrice: parseInt(values.shirtPrice),
+      suitPrice: parseInt(values.suitPrice),
+      sherwaniPrice: parseInt(values.sherwaniPrice),
       companyId: parseInt(props.companyId),
-      updatedAt: new Date().toLocaleDateString(),
     };
     console.log("variables", variables);
+    updatePriceByCompanyId({
+      variables: variables,
+      refetchQueries: [
+        {
+          query: GET_PRICES,
+          variables: { id: props.companyId },
+        },
+      ],
+    });
   };
+
+  if (loading) return <Spin />;
+  if (error) return <p>Error loading prices.</p>;
 
   return (
     <Drawer
@@ -34,51 +74,60 @@ const PriceView = (props) => {
       onClose={props.onClose}
       open={props.drawer}
     >
-      <p>Coat Price: </p>
-      <input
-        required
-        type="number"
-        name="coatPrice"
-        value={price.coatPrice}
-        onChange={handleChange}
-      />
-      <p>Pant Price: </p>
-      <input
-        required
-        type="number"
-        name="pantPrice"
-        value={price.pantPrice}
-        onChange={handleChange}
-      />
-      <p>Shirt Price: </p>
-      <input
-        required
-        type="number"
-        name="shirtPrice"
-        value={price.shirtPrice}
-        onChange={handleChange}
-      />
-      <p>Suit Price:</p>
-      <input
-        required
-        type="number"
-        name="suitPrice"
-        value={price.suitPrice}
-        onChange={handleChange}
-      />
-      <p>Sherwani Price:</p>
-      <input
-        required
-        type="number"
-        name="sherwaniPrice"
-        value={price.sherwaniPrice}
-        onChange={handleChange}
-      />
-      <div style={{ textAlign: "left" }}>
-        <button onClick={handleClick} style={{ marginRight: 8, marginTop: 40 }}>
-          Update
-        </button>
-      </div>
+      <Form
+        form={form}
+        name="priceForm"
+        layout="vertical"
+        onFinish={handleClick}
+      >
+        <Form.Item
+          label="Coat Price"
+          name="coatPrice"
+          rules={[{ required: true, message: "Please input the coat price!" }]}
+        >
+          <Input type="number" name="coatPrice" onChange={handleChange} />
+        </Form.Item>
+
+        <Form.Item
+          label="Pant Price"
+          name="pantPrice"
+          rules={[{ required: true, message: "Please input the pant price!" }]}
+        >
+          <Input type="number" name="pantPrice" onChange={handleChange} />
+        </Form.Item>
+
+        <Form.Item
+          label="Shirt Price"
+          name="shirtPrice"
+          rules={[{ required: true, message: "Please input the shirt price!" }]}
+        >
+          <Input type="number" name="shirtPrice" onChange={handleChange} />
+        </Form.Item>
+
+        <Form.Item
+          label="Suit Price"
+          name="suitPrice"
+          rules={[{ required: true, message: "Please input the suit price!" }]}
+        >
+          <Input type="number" name="suitPrice" onChange={handleChange} />
+        </Form.Item>
+
+        <Form.Item
+          label="Sherwani Price"
+          name="sherwaniPrice"
+          rules={[
+            { required: true, message: "Please input the sherwani price!" },
+          ]}
+        >
+          <Input type="number" name="sherwaniPrice" onChange={handleChange} />
+        </Form.Item>
+
+        <Form.Item>
+          <Button type="primary" htmlType="submit" style={{ marginTop: 40 }}>
+            Update
+          </Button>
+        </Form.Item>
+      </Form>
     </Drawer>
   );
 };

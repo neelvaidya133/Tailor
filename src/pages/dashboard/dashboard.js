@@ -14,6 +14,8 @@ import { Button, Layout, Menu, theme } from "antd";
 import GetAllOrders from "../../graphql/Queries/GetAllOrders";
 import PendingOrders from "../../components/OrdersView/OrdersView";
 import OrdersView from "../../components/OrdersView/OrdersView";
+import { useRecoilValue } from "recoil";
+import { shopData } from "../../recoil/atoms/shopData";
 const { Header, Content, Sider } = Layout;
 
 const Dashboard = () => {
@@ -23,6 +25,7 @@ const Dashboard = () => {
   const [priceDrawer, setPriceDrawer] = React.useState(false);
   const [openKey, setOpenKey] = React.useState("1");
   const [selectedKey, setSelectedKey] = React.useState("sub1");
+  const shopInfo = Cookies.get("shopName");
   const {
     allOrders,
     completedOrders,
@@ -33,6 +36,7 @@ const Dashboard = () => {
 
   const p = allOrders?.filter((order) => order.orderStatus === "pending");
   console.log("p", p);
+
   const { customers, customerLoading, customerError } =
     GetCustomerByCompanyId(companyId);
   useEffect(() => {
@@ -67,7 +71,7 @@ const Dashboard = () => {
               color: "#fff",
             }}
           >
-            Shop Name
+            {shopInfo}
           </h1>
         </div>
 

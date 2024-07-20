@@ -7,6 +7,7 @@ import { CREATE_CUSTOMER_MEASUREMENT } from "../../graphql/Mutations/Index";
 import { useRecoilState } from "recoil";
 import { CustomerMeas } from "../../recoil/atoms/DrawerTriggers";
 import { GET_CUSTOMER_MEASUREMENTS } from "../../graphql/Queries/GetCustomerMeasurements";
+import { Input, Button } from "antd";
 
 const CustomerMeasurement = ({ customerId, onClose }) => {
   const [clothType, setClothType] = useState("shirt");
@@ -160,7 +161,7 @@ const CustomerMeasurement = ({ customerId, onClose }) => {
       return Object.entries(currentMeasurements).map(([key, value]) => (
         <div key={key}>
           <p key={key}>{`${key.charAt(0).toUpperCase() + key.slice(1)}`}</p>
-          <input
+          <Input
             type="number"
             name={key}
             value={measurementInput[key] ?? value}
@@ -194,12 +195,13 @@ const CustomerMeasurement = ({ customerId, onClose }) => {
         {error && <p>Error :(</p>}
         <div>{getFilteredData()}</div>
         <div style={{ textAlign: "left" }}>
-          <button
+          <Button
+            type="primary"
             onClick={handleFormSubmit}
             style={{ marginRight: 8, marginTop: 40 }}
           >
             Add/Update
-          </button>
+          </Button>
         </div>
       </Drawer>
     </>

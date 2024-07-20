@@ -45,14 +45,14 @@ const CustomerView = (props) => {
           key="measurements"
           render={(_, record) => (
             <Space size="middle">
-              <button
-                href="/#"
+              <Button
+                type="primary"
                 onClick={() => {
                   handleMeasurment(record.id);
                 }}
               >
                 Details
-              </button>
+              </Button>
             </Space>
           )}
         />

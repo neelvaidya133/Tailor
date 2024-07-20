@@ -40,7 +40,7 @@ const AddOrder = (props) => {
       deliveryDate: values.deliveryDate.format("YYYY-MM-DD"),
       companyId: companyId,
       orderStatus: "pending",
-      createdAt: new Date(),
+      createdAt: new Date().toDateString,
     };
     console.log(newOrderData);
     createNewOrder({

@@ -4,8 +4,9 @@ const validateSignup = (signup) => {
   let errors = {};
 
   // Name validation
-  if (!signup.name) {
-    errors.name = "Name is required";
+  if (!signup.name_input) {
+    console.log("signup.name", signup);
+    errors.name_input = "Name is required";
   }
 
   // Email validation

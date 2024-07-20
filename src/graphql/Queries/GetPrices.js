@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { Spin } from "antd";
-const GET_PRICES = gql`
+export const GET_PRICES = gql`
   query prices($id: Int!) {
     companyById(id: $id) {
       priceByCompanyId {

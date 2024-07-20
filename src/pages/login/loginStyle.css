@@ -1,11 +1,13 @@
 .login-form {
-    max-width: 300px;
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    padding: 20px;
-    
+  padding: 20px;
+ width: 50%;
+  border-radius: 10px;
+   /* White text color for better visibility on the light background */
+  position: relative;
+  overflow: hidden; /* Ensures no overflow outside the border-radius */
     
   }
+
 .login-form-forgot {
     float: right;
   }
@@ -14,20 +16,72 @@
   }
 .login-form-button {
     width: 100%;
+ padding: 5px 0px;
+ height: 100%;
   }
 
 .container {
     height: 100vh;
     display: flex;
-    justify-content: space-evenly;
+    width: 100%;
+    
+    justify-content: center;
     align-items: center;
-    flex-direction: row;
+  background-color: #f0f2f5;
     
 }
+.login-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    background-color: white;
+}
 
+.login-right {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.login-left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+
+
+}
 .svgWrap img {
     max-width: 300px;
     height: 100%;
+   
 
     object-fit: cover;
+}
+
+.svgWrap h1 {
+  color: #fff;
+}
+
+
+.ant-form-item-control-input {
+  
+  padding: 5px 0px;
+
 }

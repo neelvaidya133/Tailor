@@ -9,6 +9,7 @@ const GET_COMPANY_DATA = gql`
           nodes {
             companyName
             id
+            companyAddress
             priceByCompanyId {
               id
               coatPrice
@@ -36,7 +37,7 @@ const GetCompanyData = () => {
   const { data, loading, error } = useQuery(GET_COMPANY_DATA, {
     variables: { id: userID },
   });
-
+  console.log("data", loading);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
   console.log("data", data);
