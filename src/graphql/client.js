@@ -10,7 +10,7 @@ import { onError } from "@apollo/client/link/error";
 import Cookies from "js-cookie";
 
 const httpLink = new HttpLink({
-  uri: "http://3.14.146.196:3500/graphql",
+  uri: "https://tailorapi.onrender.com/graphql",
 });
 
 const authLink = new ApolloLink((operation, forward) => {
