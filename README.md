@@ -56,7 +56,7 @@ The frontend application is deployed on [Vercel](https://vercel.com/home) and ca
 
 <h2>💻 Additional Details </h2>
 
-The backend repository for this project is also built and deployed by me. You can find the backend repo and more information [here](https://github.com/neelvaidya133/tailor-api).
+The backend repository for this project is also built and deployed by me. You can find the backend repo and more information [here](https://github.com/neelvaidya133/TailorApi).
 
 
 
