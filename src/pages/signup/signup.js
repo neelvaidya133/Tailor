@@ -41,25 +41,27 @@ const Signup = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validateSignup(signup);
-    setError(validationErrors);
-    console.log(validationErrors);
-    const isValid = Object.keys(validationErrors).length === 0;
-    console.log(isValid);
-    if (isValid) {
-      signupUser({
-        variables: {
-          inputName: signup.name_input,
-          inputEmail: signup.email,
-          inputPassword: signup.password,
-          inputPhone: signup.phone,
-        },
-      });
-      console.log("signup", signup);
-    } else {
-      console.log("okokokokok", error);
-    }
+
+    
+    // e.preventDefault();
+    // const validationErrors = validateSignup(signup);
+    // setError(validationErrors);
+    // console.log(validationErrors);
+    // const isValid = Object.keys(validationErrors).length === 0;
+    // console.log(isValid);
+    // if (isValid) {
+    //   signupUser({
+    //     variables: {
+    //       inputName: signup.name_input,
+    //       inputEmail: signup.email,
+    //       inputPassword: signup.password,
+    //       inputPhone: signup.phone,
+    //     },
+    //   });
+    //   console.log("signup", signup);
+    // } else {
+    //   console.log("okokokokok", error);
+    // }
   };
 
   return (
