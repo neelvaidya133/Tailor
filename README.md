@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+<h1 align="center" id="title">Tailor's Data (Front-end)</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p id="description">Tailor's Data is a full-stack application designed to help users manage multiple shops efficiently. This repository contains the frontend of the Tailor's Data application built with React.js, Styled Components, Ant Design, Apollo Client for GraphQL, and JWT for authentication.</p>
 
-## Available Scripts
+<h2>🚀 Demo</h2>
 
-In the project directory, you can run:
+[https://tailor-beta.vercel.app/](https://tailor-beta.vercel.app/)
 
-### `npm start`
+Users can access the demo of the Tailor's data application using the following credentials:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Email:** shop1@gmail.com
+- **Password:** admin123
+  
+<h2>🧐 Features</h2>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Here're some of the project's best features:
 
-### `npm test`
+*   User authentication with JWT
+*   Manage multiple shops from a single login
+*   View and manage pending orders
+*   Complete orders and generate invoices
+*   PDF generation for invoices
+*   Customer details and measurements management
+*   Private routing with React Router
+*   Update prices for clothes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<h2>🛠️ Installation Steps:</h2>
 
-### `npm run build`
+<p>1. Clone the repository:</p>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+   git clone https://github.com/neelvaidya133/Tailor.git
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p>2. Navigate to the project directory:</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+cd Tailor
+```
 
-### `npm run eject`
+<p>3. Install the dependencies:</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p>4. Start the development server:</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<h2>🚀 Deployment</h2>
 
-## Learn More
+The frontend application is deployed on [Vercel](https://vercel.com/home) and can be accessed at [Tailor's Data on Vercel](https://tailor-beta.vercel.app/).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<h2>💻 Additional Details </h2>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The backend repository for this project is also built and deployed by me. You can find the backend repo and more information [here](https://github.com/neelvaidya133/tailor-api).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+<h2>🍰 Contribution Guidelines:</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project was developed by Neel Vaidya (https://github.com/neelvaidya133). Special thanks to my mentor Nisarg Tailor (https://github.com/) whose idea and guidance were instrumental in building this project. Additional thanks to the open-source community and contributors.
 
-### Making a Progressive Web App
+  
+  
+<h2>💻 Built with</h2>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Technologies used in the project:
 
-### Advanced Configuration
+*   [ReactJs](https://reactjs.org/)
+*   [Ant Design](https://ant.design/)
+*   [Styled-components](https://styled-components.com/)
+*   [Apollo-Client](https://www.apollographql.com/docs/react/)
+*   [Graphql](https://graphql.org/)
+*   [React Router](https://reactrouter.com/)
+*   [Recoil.Js](https://recoiljs.org/)
+*   [Pdfmake](http://pdfmake.org/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h2>🛡️ License:</h2>
+This project is licensed under the MIT License    
