@@ -54,10 +54,6 @@ npm start
 
 The frontend application is deployed on [Vercel](https://vercel.com/home) and can be accessed at [Tailor's Data on Vercel](https://tailor-beta.vercel.app/).
 
-<h2>💻 Additional Details </h2>
-
-The backend repository for this project is also built and deployed by me. You can find the backend repo and more information [here](https://github.com/neelvaidya133/TailorApi).
-
 
 
 <h2>🍰 Contribution Guidelines:</h2>
@@ -79,5 +75,20 @@ Technologies used in the project:
 *   [Recoil.Js](https://recoiljs.org/)
 *   [Pdfmake](http://pdfmake.org/)
 
+<h2>💻 Additional Details </h2>
+
+The backend repository for this project is also built and deployed by me. You can find the backend repo and more information [here](https://github.com/neelvaidya133/TailorApi).
+
+## Basic Sequence Diagram
+Below is the sequence diagram illustrating the flow of data within the application:
+
+Sequence Diagram : (/Sequnce_Diagram_Tailor'sData.png)
+
+## Flow Chart
+The following flow chart represents the workflow of the Tailor's Data Application:
+
+Flow Chart: (/Flow_Chart_Tailor'sData.png)
+
 <h2>🛡️ License:</h2>
 This project is licensed under the MIT License    
+
